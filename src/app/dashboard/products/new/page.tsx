@@ -5,15 +5,11 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import styles from '../../dashboard.module.css'
 
-
-const CATEGORIES_LIST = [
-  { id: 'cat-jewelry',  name: 'Jewelry',  slug: 'jewelry'  },
-  { id: 'cat-ceramics', name: 'Ceramics', slug: 'ceramics' },
-  { id: 'cat-textiles', name: 'Textiles', slug: 'textiles' },
-  { id: 'cat-woodwork', name: 'Woodwork', slug: 'woodwork' },
-  { id: 'cat-candles',  name: 'Candles',  slug: 'candles'  },
-  { id: 'cat-paintings',name: 'Paintings',slug: 'paintings' },
-]
+interface Category {
+  id: string
+  name: string
+  slug: string
+}
 
 export default function NewProductPage() {
   const { status } = useSession()
@@ -27,11 +23,23 @@ export default function NewProductPage() {
   const [tags, setTags] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [categories, setCategories] = useState<Category[]>([])
+  const [categoriesLoading, setCategoriesLoading] = useState(true)
 
   useEffect(() => {
     if (status === 'unauthenticated') router.push('/login')
-
   }, [status, router])
+
+  // Fetch real category IDs from the database
+  useEffect(() => {
+    fetch('/api/categories')
+      .then((r) => r.json())
+      .then((data) => {
+        setCategories(Array.isArray(data) ? data : [])
+        setCategoriesLoading(false)
+      })
+      .catch(() => setCategoriesLoading(false))
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -131,9 +139,12 @@ export default function NewProductPage() {
                 onChange={(e) => setCategoryId(e.target.value)}
                 required
                 aria-required="true"
+                disabled={categoriesLoading}
               >
-                <option value="">Select a category…</option>
-                {CATEGORIES_LIST.map((c) => (
+                <option value="">
+                  {categoriesLoading ? 'Loading categories…' : 'Select a category…'}
+                </option>
+                {categories.map((c) => (
                   <option key={c.id} value={c.id}>{c.name}</option>
                 ))}
               </select>
@@ -147,7 +158,7 @@ export default function NewProductPage() {
               className="form-textarea"
               value={images}
               onChange={(e) => setImages(e.target.value)}
-              placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"
+              placeholder={'https://example.com/image1.jpg\nhttps://example.com/image2.jpg'}
               rows={3}
               aria-describedby="images-hint"
             />
@@ -176,7 +187,7 @@ export default function NewProductPage() {
             <Link href="/dashboard" className="btn btn-secondary">
               Cancel
             </Link>
-            <button type="submit" className="btn btn-primary" disabled={loading}>
+            <button type="submit" className="btn btn-primary" disabled={loading || categoriesLoading}>
               {loading ? 'Creating…' : 'Create Listing'}
             </button>
           </div>
