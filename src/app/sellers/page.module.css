@@ -1,0 +1,86 @@
+.heading {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 12px;
+}
+
+.subheading {
+  color: var(--color-gray-500);
+  font-size: 1.0625rem;
+  margin-bottom: 48px;
+  max-width: 560px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  color: var(--color-espresso) !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  color: var(--color-espresso) !important;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-honey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: var(--color-espresso);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.shopName {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-espresso);
+}
+
+.location {
+  font-size: .8125rem;
+  color: var(--color-gray-500);
+}
+
+.bio {
+  font-size: .875rem;
+  color: var(--color-gray-500);
+  line-height: 1.5;
+}
+
+.productCount {
+  font-size: .8125rem;
+  font-weight: 600;
+  color: var(--color-saddle);
+  background: var(--color-linen);
+  padding: 3px 10px;
+  border-radius: 99px;
+}

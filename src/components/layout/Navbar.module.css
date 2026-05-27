@@ -1,0 +1,292 @@
+.header {
+  background: var(--color-espresso);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--shadow-md);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  gap: 16px;
+}
+
+/* Screen-reader only */
+.srOnly {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-cream) !important;
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.logo:hover { color: var(--color-honey) !important; }
+.logoIcon { font-size: 1.375rem; }
+.logoText { display: none; }
+@media (min-width: 480px) { .logoText { display: inline; } }
+
+/* ── Search form — hidden on mobile, visible on desktop ── */
+.searchForm {
+  display: none;
+  position: relative;
+  flex: 1;
+  max-width: 340px;
+}
+@media (min-width: 900px) { .searchForm { display: flex; align-items: center; } }
+
+.searchInput {
+  width: 100%;
+  padding: 8px 40px 8px 14px;
+  border-radius: 99px;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  outline: none;
+  transition: background 0.2s;
+}
+.searchInput::placeholder { color: rgba(255,255,255,0.45); }
+.searchInput:focus { background: rgba(255,255,255,0.2); }
+
+.searchBtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+.searchBtn:hover { color: var(--color-honey); }
+
+/* ── Nav links ── */
+.navLinks {
+  display: none;
+  list-style: none;
+  gap: 28px;
+  align-items: center;
+  flex-shrink: 0;
+}
+@media (min-width: 900px) { .navLinks { display: flex; } }
+
+.navLinks a {
+  color: var(--color-linen);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+.navLinks a:hover { color: var(--color-honey); }
+
+/* ── Auth actions ── */
+.navActions {
+  display: none;
+  gap: 10px;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+@media (min-width: 900px) { .navActions { display: flex; } }
+
+.btnStartSelling {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 16px;
+  background: var(--color-honey);
+  color: var(--color-espresso) !important;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+}
+.btnStartSelling:hover {
+  background: #c49558;
+  transform: translateY(-1px);
+}
+
+/* ── Mobile right cluster ── */
+.mobileRight {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+@media (min-width: 900px) { .mobileRight { display: none; } }
+
+.mobileSearchToggle,
+.hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--color-cream);
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.mobileSearchToggle:hover,
+.hamburger:hover { background: rgba(255,255,255,0.08); }
+.hamburger { font-size: 1.375rem; }
+
+/* ── Mobile search bar ── */
+.mobileSearchBar {
+  background: var(--color-espresso);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 12px 16px;
+}
+.mobileSearchBar form {
+  display: flex;
+  gap: 8px;
+}
+.mobileSearchInput {
+  flex: 1;
+  padding: 9px 14px;
+  border-radius: 99px;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+}
+.mobileSearchInput::placeholder { color: rgba(255,255,255,0.4); }
+.mobileSearchInput:focus { background: rgba(255,255,255,0.2); }
+.mobileSearchSubmit {
+  padding: 9px 18px;
+  background: var(--color-honey);
+  color: var(--color-espresso);
+  border: none;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+/* ── Mobile nav menu ── */
+.mobileMenu {
+  background: var(--color-espresso);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 12px 16px 16px;
+}
+.mobileMenu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mobileMenu a,
+.mobileMenu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 11px 16px;
+  color: var(--color-linen);
+  font-size: 1rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: background 0.15s, color 0.15s;
+  font-family: var(--font-body);
+  text-decoration: none;
+}
+.mobileMenu a:hover,
+.mobileMenu button:hover {
+  background: rgba(255,255,255,0.08);
+  color: var(--color-honey);
+}
+
+/* ── Icon buttons (wishlist / cart) ── */
+.iconBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-linen);
+  padding: 6px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.iconBtn:hover { color: var(--color-honey); background: rgba(255,255,255,0.08); }
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--color-terracotta);
+  color: white;
+  font-size: 0.625rem;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  line-height: 1;
+}
+
+/* Mobile icon buttons */
+.mobileIconBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--color-cream);
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+  text-decoration: none;
+}
+.mobileIconBtn:hover { background: rgba(255,255,255,0.08); }
+
+.mobileBadge {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  background: var(--color-terracotta);
+  color: white;
+  font-size: 0.55rem;
+  font-weight: 700;
+  min-width: 14px;
+  height: 14px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px;
+  line-height: 1;
+}

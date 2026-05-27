@@ -1,0 +1,120 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+@media (min-width: 768px) {
+  .layout {
+    grid-template-columns: 260px 1fr;
+    align-items: start;
+  }
+}
+
+.sidebar {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 80px;
+}
+
+.sidebarTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+}
+
+.filterGroup {
+  border: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.filterLabel {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-espresso);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--color-espresso);
+}
+
+.radioLabel input {
+  accent-color: var(--color-honey);
+}
+
+.main {}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.resultsCount {
+  font-size: 0.9375rem;
+  color: var(--color-gray-500);
+}
+
+.empty {
+  padding: 64px;
+  text-align: center;
+  color: var(--color-gray-500);
+  background: var(--color-white);
+  border-radius: var(--radius);
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* ── DB / fetch error state ── */
+.errorBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  background: #fff4f2;
+  border: 1px solid #fdd;
+  border-radius: var(--radius);
+  margin-top: 8px;
+}
+
+.errorIcon {
+  font-size: 1.5rem;
+  color: var(--color-terracotta);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.errorTitle {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-espresso);
+}
+
+.errorMsg {
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+  margin-top: 4px;
+}

@@ -1,0 +1,139 @@
+.heading {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 8px;
+}
+
+.subheading {
+  color: var(--color-gray-500);
+  font-size: 1.0625rem;
+  margin-bottom: 40px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.stat {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.statNumber {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-honey);
+}
+
+.statLabel {
+  font-size: .875rem;
+  color: var(--color-gray-500);
+  font-weight: 500;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: 360px 1fr; align-items: start; }
+}
+
+.section {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.emptyProducts {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--color-gray-500);
+}
+
+.productList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.productRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--color-linen);
+  border-radius: var(--radius);
+  transition: background 0.15s;
+}
+
+.productRow:hover {
+  background: var(--color-cream);
+}
+
+.productThumb {
+  width: 60px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: var(--color-linen);
+}
+
+.productInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.productTitle {
+  font-weight: 600;
+  font-size: .9375rem;
+  color: var(--color-espresso);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.productMeta {
+  font-size: .8125rem;
+  color: var(--color-gray-500);
+}
+
+.inactiveBadge {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.productActions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
