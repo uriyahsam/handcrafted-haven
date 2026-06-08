@@ -92,10 +92,10 @@ export default function CartPage() {
             <span>Total</span>
             <span>${total.toFixed(2)}</span>
           </div>
-          <button className={`btn btn-primary ${styles.checkoutBtn}`} disabled>
-            Proceed to Checkout
-          </button>
-          <p className={styles.checkoutNote}>Checkout coming soon — this is a demo.</p>
+          <Link href="/checkout" className={`btn btn-primary ${styles.checkoutBtn}`}>
+            Proceed to Checkout →
+          </Link>
+
           <Link href="/shop" className={styles.continueShopping}>← Continue Shopping</Link>
         </aside>
       </div>

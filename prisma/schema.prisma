@@ -24,6 +24,8 @@ model User {
   reviews       Review[]
   accounts      Account[]
   sessions      Session[]
+  buyerOrders   Order[]       @relation("BuyerOrders")
+  sellerOrders  Order[]       @relation("SellerOrders")
 }
 
 model Account {
@@ -95,6 +97,7 @@ model Product {
   updatedAt       DateTime      @updatedAt
 
   reviews Review[]
+  orders  Order[]
 }
 
 model Category {
@@ -116,6 +119,35 @@ model Review {
   updatedAt DateTime @updatedAt
 
   @@unique([userId, productId])
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  buyer           User        @relation("BuyerOrders", fields: [buyerId], references: [id])
+  buyerId         String
+  seller          User        @relation("SellerOrders", fields: [sellerId], references: [id])
+  sellerId        String
+  product         Product     @relation(fields: [productId], references: [id])
+  productId       String
+  quantity        Int         @default(1)
+  totalPrice      Decimal     @db.Decimal(10, 2)
+  status          OrderStatus @default(PENDING)
+  // Payment info (prefilled, locked — school demo only)
+  paymentName     String
+  paymentEmail    String
+  paymentAddress  String
+  paymentCity     String
+  paymentCardLast String      // last 4 digits only
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
 }
 
 enum Role {

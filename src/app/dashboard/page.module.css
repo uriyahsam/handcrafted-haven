@@ -137,3 +137,146 @@
   gap: 8px;
   flex-shrink: 0;
 }
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 2px solid var(--color-linen);
+  margin-bottom: 28px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  padding: 10px 20px;
+  font-size: .9375rem;
+  font-weight: 500;
+  color: var(--color-gray-500);
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tab:hover {
+  background: var(--color-linen);
+  color: var(--color-espresso);
+}
+
+.tabActive {
+  color: var(--color-saddle);
+  border-bottom-color: var(--color-saddle);
+  background: var(--color-linen);
+}
+
+.tabBadge {
+  background: var(--color-terracotta);
+  color: white;
+  font-size: .6875rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* Orders */
+.orderList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.orderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--color-linen);
+  border-radius: var(--radius);
+  flex-wrap: wrap;
+}
+
+.orderRowLeft {
+  display: flex;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.orderInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.orderProductTitle {
+  font-weight: 600;
+  font-size: .9375rem;
+  color: var(--color-espresso);
+  margin-bottom: 4px;
+}
+
+.orderMeta {
+  font-size: .8125rem;
+  color: var(--color-gray-500);
+  margin-top: 2px;
+}
+
+.orderRowRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.orderStatusBadge {
+  font-size: .8125rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.oStatus_PENDING   { background: #FFF3CD; color: #856404; }
+.oStatus_PROCESSING { background: #CCE5FF; color: #004085; }
+.oStatus_SHIPPED   { background: #D1ECF1; color: #0C5460; }
+.oStatus_DELIVERED { background: #D4EDDA; color: #155724; }
+.oStatus_CANCELLED { background: #F8D7DA; color: #721C24; }
+
+.statusActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.statusBtn {
+  padding: 5px 10px !important;
+  font-size: .75rem !important;
+}
+
+.finalStatus {
+  font-size: .875rem;
+  color: var(--color-gray-500);
+  font-style: italic;
+}
+
+/* Extended stats grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 900px) {
+  .statsGrid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 560px) {
+  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+  .tabs { flex-wrap: wrap; }
+}

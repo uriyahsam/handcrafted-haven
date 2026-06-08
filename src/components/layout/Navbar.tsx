@@ -82,6 +82,11 @@ export function Navbar() {
                   Dashboard
                 </Link>
               )}
+              {session.user?.role === 'BUYER' && (
+                <Link href="/orders" className="btn btn-secondary" style={{ padding: '6px 14px', fontSize: '.875rem', color: '#f0e6d3' }}>
+                  My Orders
+                </Link>
+              )}
               <button
                 onClick={() => signOut({ callbackUrl: '/' })}
                 className="btn btn-primary"
@@ -168,7 +173,10 @@ export function Navbar() {
             {session ? (
               <>
                 {session.user?.role === 'SELLER' && (
-                  <li><Link href="/dashboard" onClick={() => setMenuOpen(false)}>Dashboard</Link></li>
+                  <>
+                    <li><Link href="/dashboard" onClick={() => setMenuOpen(false)}>Dashboard</Link></li>
+                    <li><Link href="/orders" onClick={() => setMenuOpen(false)}>My Orders</Link></li>
+                  </>
                 )}
                 <li>
                   <button onClick={() => { setMenuOpen(false); signOut({ callbackUrl: '/' }) }}>
